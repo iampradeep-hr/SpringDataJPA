@@ -1,5 +1,6 @@
 package com.pradeep.demo.repository;
 
+import com.pradeep.demo.entities.Guardian;
 import com.pradeep.demo.entities.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,9 @@ class StudentRepositoryTest {
                 .emailId("pradeep@gmail.com")
                 .firstName("Pradeep")
                 .lastName("HR")
-                .guardianEmail("lilpersian3@gmail.com")
-                .guardianName("Yoshi")
-                .guardianMobile("9999995555")
+//                .guardianEmail("lilpersian3@gmail.com")
+//                .guardianName("Yoshi")
+//                .guardianMobile("9999995555")
                 .build();
 
         studentRepository.save(student);
@@ -32,6 +33,27 @@ class StudentRepositoryTest {
     public void printAllStudents() {
         List<Student> studentList=studentRepository.findAll();
         System.out.println(studentList);
+    }
+
+
+    @Test
+    public void saveStudentWithGuardian(){
+
+        Guardian guardian=Guardian.builder()
+                .email("lilpersian3@gmail.com")
+                .name("Yoshi")
+                .mobile("9999995555").build();
+
+
+        Student student = Student.builder()
+                .emailId("sohan@gmail.com")
+                .firstName("Sohan")
+                .lastName("S")
+                .guardian(guardian)
+                .build();
+
+        studentRepository.save(student);
+
     }
 
 }
