@@ -1,4 +1,4 @@
-package com.pradeep.demo.entities;
+package com.pradeep.demo.entity;
 
 
 // NO NEED OF DIFFERENT TABLE FOR THIS - USE Embedding

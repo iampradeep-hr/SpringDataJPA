@@ -1,7 +1,6 @@
 package com.pradeep.demo.repository;
 
-import com.pradeep.demo.entities.Guardian;
-import com.pradeep.demo.entities.Student;
+import com.pradeep.demo.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,19 +14,19 @@ class StudentRepositoryTest {
     @Autowired
     private StudentRepository studentRepository;
 
-    @Test
-    public void saveStudent() {
-        Student student = Student.builder()
-                .emailId("pradeep@gmail.com")
-                .firstName("Pradeep")
-                .lastName("HR")
-//                .guardianEmail("lilpersian3@gmail.com")
-//                .guardianName("Yoshi")
-//                .guardianMobile("9999995555")
-                .build();
-
-        studentRepository.save(student);
-    }
+//    @Test
+//    public void saveStudent() {
+//        Student student = Student.builder()
+//                .emailId("pradeep@gmail.com")
+//                .firstName("Pradeep")
+//                .lastName("HR")
+////                .guardianEmail("lilpersian3@gmail.com")
+////                .guardianName("Yoshi")
+////                .guardianMobile("9999995555")
+//                .build();
+//
+//        studentRepository.save(student);
+//    }
 
     @Test
     public void printAllStudents() {
@@ -36,25 +35,25 @@ class StudentRepositoryTest {
     }
 
 
-    @Test
-    public void saveStudentWithGuardian(){
-
-        Guardian guardian=Guardian.builder()
-                .email("lilpersian3@gmail.com")
-                .name("Yoshi")
-                .mobile("9999995555").build();
-
-
-        Student student = Student.builder()
-                .emailId("sohan@gmail.com")
-                .firstName("Sohan")
-                .lastName("S")
-                .guardian(guardian)
-                .build();
-
-        studentRepository.save(student);
-
-    }
+//    @Test
+//    public void saveStudentWithGuardian(){
+//
+//        Guardian guardian=Guardian.builder()
+//                .email("lilpersian3@gmail.com")
+//                .name("Yoshi")
+//                .mobile("9999995555").build();
+//
+//
+//        Student student = Student.builder()
+//                .emailId("sohan@gmail.com")
+//                .firstName("Sohan")
+//                .lastName("S")
+//                .guardian(guardian)
+//                .build();
+//
+//        studentRepository.save(student);
+//
+//    }
 
 
     @Test
@@ -111,6 +110,16 @@ class StudentRepositoryTest {
                 "pradeep@gmail.com"
         );
         System.out.println("Record: \n"+student);
+    }
+
+    //Modifying and Transaction
+
+    @Test
+    public void updateStudentNameByEmailIdTest(){
+        int res=studentRepository.updateStudentNameByEmailId(
+                "Pradeep","pradeep@gmail.com"
+        );
+        System.out.println("Update results: "+res);
     }
 
 
