@@ -79,4 +79,32 @@ class StudentRepositoryTest {
         System.out.println("*** Found Records ***\n"+studentList);
     }
 
+    //JPQL
+    @Test
+    public void printStudentByEmailAddressJPQL(){
+        Student student=studentRepository.getStudentByEmailAddress(
+                "pradeep@gmail.com"
+        );
+        System.out.println("Record: \n"+student);
+    }
+
+    @Test
+    public void printStudentFirstNameByEmailAddressJPQL(){
+        String s=studentRepository.getStudentFirstNameByEmailAddress(
+                "pradeep@gmail.com"
+        );
+        System.out.println("Record: \n"+s);
+    }
+
+
+    //Native SQL
+    @Test
+    public void printStudentByEmailAddressNative(){
+        Student student=studentRepository.getStudentByEmailAddressNative(
+                "pradeep@gmail.com"
+        );
+        System.out.println("Record: \n"+student);
+    }
+
+
 }
