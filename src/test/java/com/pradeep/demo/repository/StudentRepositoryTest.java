@@ -105,6 +105,13 @@ class StudentRepositoryTest {
         );
         System.out.println("Record: \n"+student);
     }
+    @Test
+    public void printStudentByEmailAddressNativeParams(){
+        Student student=studentRepository.getStudentByEmailAddressNativeParams(
+                "pradeep@gmail.com"
+        );
+        System.out.println("Record: \n"+student);
+    }
 
 
 }

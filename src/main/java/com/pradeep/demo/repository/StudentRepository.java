@@ -3,6 +3,7 @@ package com.pradeep.demo.repository;
 import com.pradeep.demo.entities.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -31,6 +32,16 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             nativeQuery = true
     )
     Student getStudentByEmailAddressNative(String emailAddress);
+
+
+    @Query(
+            value = "SELECT * FROM tbl_student s where s.email_address=:emailId",
+            nativeQuery = true
+    )
+    Student getStudentByEmailAddressNativeParams(
+            @Param("emailId")
+            String emailId
+    );
 
 
 
