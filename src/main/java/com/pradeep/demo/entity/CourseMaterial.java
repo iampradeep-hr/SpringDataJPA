@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@ToString(exclude = "course")
+@ToString(exclude = "course")
 public class CourseMaterial {
 
     @Id
@@ -29,8 +29,9 @@ public class CourseMaterial {
     @OneToOne(
             //cascading is must
             cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY
-            fetch = FetchType.EAGER
+            fetch = FetchType.LAZY,
+            optional = false
+//            fetch = FetchType.EAGER
     )
     @JoinColumn(
             name = "course_id",

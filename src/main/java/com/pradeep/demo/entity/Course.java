@@ -24,4 +24,15 @@ public class Course {
     private Long courseId;
     private String title;
     private Integer credit;
+
+
+    //Bi directional mapping
+    @OneToOne(
+            mappedBy = "course",
+            cascade = CascadeType.ALL
+            //tells that there is already a mapping in courseMaterial already, use that
+            //fk is already present there
+
+    )
+    private CourseMaterial courseMaterial;
 }
