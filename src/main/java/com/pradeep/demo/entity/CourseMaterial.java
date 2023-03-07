@@ -30,7 +30,7 @@ public class CourseMaterial {
             //cascading is must
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
-            optional = false
+            optional = false //when saving courseMaterial is not mandatory
 //            fetch = FetchType.EAGER
     )
     @JoinColumn(
