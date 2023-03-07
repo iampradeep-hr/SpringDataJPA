@@ -4,12 +4,14 @@ import com.pradeep.demo.entity.Course;
 import com.pradeep.demo.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
 class CourseRepositoryTest {
@@ -40,5 +42,24 @@ class CourseRepositoryTest {
 
         courseRepository.save(course);
     }
+
+
+    //****** Paging and sorting *******
+
+    @Test
+    public void findAllPagination(){
+        Pageable firstPageWithThreeRecords=
+                PageRequest.of(0,3);
+
+
+        Pageable firstPageWithTwoRecordsSorted=
+                PageRequest.of(0,3, Sort.by("title").descending());
+        List<Course> list= courseRepository
+                        .findAll(firstPageWithTwoRecordsSorted)
+                        .getContent();
+
+        System.out.println(list);
+    }
+
 
 }
